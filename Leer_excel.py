@@ -58,11 +58,3 @@ for hoja in hojas_validas:
 
     # Almacenar los DataFrames de esta hoja
     dataframes_por_hoja[hoja] = dataframes
-
-# Mostrar los DataFrames generados por hoja
-'''for hoja, dataframes in dataframes_por_hoja.items():
-    print(f"Hojas procesadas: {hoja}")
-    for idx, df in enumerate(dataframes):
-        print(f"DataFrame {idx + 1} en la hoja {hoja}:")
-        print(df.head())
-        print()'''
