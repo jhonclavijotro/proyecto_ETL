@@ -51,10 +51,11 @@ Para garantizar la calidad de los datos, se emplearán:
 
 ### **Carga en Base de Datos**
 
-Dependiendo de la escala del proyecto, se considera el uso de:
+Para la carga de datos, se emplerá:
 
 - **PostgreSQL** con extensión **PostGIS** para manejo de datos espaciales.
-- **Google BigQuery** o **Amazon Redshift** en caso de requerirse una solución para Big Data.
+- **Google BigQuery** o **Amazon Redshift** en caso de escalaciónd de datos.
+- **MongoDB** para almacenar datos semiestructurados y consultas flexibles.
 
 ---
 
