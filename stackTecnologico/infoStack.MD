@@ -82,6 +82,8 @@ Para la generación de reportes y análisis de empleabilidad, se utilizarán las
 <!-- - **Jupyter Notebooks** para la exploración y prueba de datos. -->
 - **Tableau o Power BI** para la creación de dashboards interactivos.
 
+<!--
+
 ---
 
 ## **Infraestructura y DevOps**
@@ -93,7 +95,7 @@ Para garantizar la estabilidad y escalabilidad del sistema, se recomienda:
 - **Heroku, Vercel o AWS EC2** para el hosting de la web.
 - **Google Cloud Functions o AWS Lambda** para la ejecución de funciones serverless.
 
-## <!--
+
 
 ## **Seguridad y Escalabilidad**
 
