@@ -79,7 +79,7 @@ Para almacenar y gestionar la información procesada, se propone:
 Para la generación de reportes y análisis de empleabilidad, se utilizarán las siguientes herramientas:
 
 - **Python (Pandas, Scikit-learn, Statsmodels)** para el análisis estadístico y desarrollo de modelos predictivos.
-- **Jupyter Notebooks** para la exploración y prueba de datos.
+<!-- - **Jupyter Notebooks** para la exploración y prueba de datos. -->
 - **Tableau o Power BI** para la creación de dashboards interactivos.
 
 ---
