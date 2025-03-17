@@ -10,7 +10,7 @@ class conect_estudios():
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0'}
         self._url_request = 'https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas'
         self._url_base = 'https://snies.mineducacion.gov.co/1778'
-        self._save_path = './data/Excel_Min'
+        self._save_path = './data/Excel_Min' # modificar path para almacenamiento de archivos
         self.data = {}
 
     def set_url_request(self, url):
@@ -90,9 +90,3 @@ class conect_estudios():
         tags = response.find_all(name='a', href=True)
         lista = self.lista_links(tags=tags)
         return lista
-
-
-con = conect_estudios()
-lista = con.get_data()
-con.download_excel_files(urls=lista['url'], names=lista['name'])
-con.crear_DataFrame()
