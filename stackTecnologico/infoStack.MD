@@ -119,7 +119,10 @@ Para garantizar la seguridad y el acceso controlado a la información:
 | <!--              | **Almacenamiento**                                        | AWS S3, Google Cloud Storage | --> |
 | **Análisis**      | Python (Pandas, Scikit-learn), Jupyter, Tableau, Power BI |
 | **DevOps**        | Docker, GitHub Actions, Heroku, AWS EC2                   |
-| <!--              | **Seguridad**                                             | OAuth 2.0, JWT, HTTPS        | --> |
+
+<!--
+|               | **Seguridad**                                             | OAuth 2.0, JWT, HTTPS        |
+-->
 
 ---
 
