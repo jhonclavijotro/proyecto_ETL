@@ -112,15 +112,14 @@ Para garantizar la seguridad y el acceso controlado a la información:
 | ----------------- | --------------------------------------------------------- |
 | **Frontend**      | React.js, D3.js, Chart.js, Tailwind CSS                   |
 | **Backend**       | FastAPI, Flask, Django, Node                              |
-| **ETL**           | Pandas, NumPy, Apache Airflow                             |
-| **Base de Datos** | PostgreSQL, BigQuery, Redshift                            |
+| **ETL**           | Pandas, NumPy, BeautifulSoup                              |
+| **Base de Datos** | PostgreSQL, MongoDB, Power BI                             |
 | **Análisis**      | Python (Pandas, Scikit-learn), Jupyter, Tableau, Power BI |
-| **DevOps**        | Docker, GitHub Actions, Heroku, AWS EC2                   |
 
 <!--
-| **Almacenamiento**                                        | AWS S3, Google Cloud Storage |
-
-| **Seguridad**                                             | OAuth 2.0, JWT, HTTPS        |
+| **Almacenamiento**  | AWS S3, Google Cloud Storage            |
+| **DevOps**          | Docker, GitHub Actions, Heroku, AWS EC2 |
+| **Seguridad**       | OAuth 2.0, JWT, HTTPS                   |
 -->
 
 ---
