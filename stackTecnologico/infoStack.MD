@@ -39,15 +39,13 @@ Dado que el proyecto implica la recopilación y análisis de datos provenientes 
 Para la adquisición de datos desde fuentes diversas, se recomienda:
 
 - **Pandas (Python)** Para la manipulación de datos.
-- **Apache Airflow** para la orquestación y automatización del pipeline ETL.
+- **Requests / BeautifulSoup** Para scraping web.
 
 ### **Transformación y Limpieza**
 
 Para garantizar la calidad de los datos, se emplearán:
 
 - **Pandas + NumPy** Para la limpieza y transformación de datos.
-- **OpenRefine** Para procesos de limpieza manual.
-- **PySpark** Manejo de grandes volúmenes de datos.
 
 ### **Carga en Base de Datos**
 
@@ -110,20 +108,19 @@ Para garantizar la seguridad y el acceso controlado a la información:
 
 ## **Resumen del Stack Tecnológico**
 
-| Capa              | Tecnología                              |
-| ----------------- | --------------------------------------- |
-| **Frontend**      | React.js, D3.js, Chart.js, Tailwind CSS |
-| **Backend**       | FastAPI, Flask, Django, Node            |
-| **ETL**           | Pandas, NumPy, Apache Airflow           |
-| **Base de Datos** | PostgreSQL, BigQuery, Redshift          |
-
-<!--|               | **Almacenamiento**                                        | AWS S3, Google Cloud Storage | -->
-
-| **Análisis** | Python (Pandas, Scikit-learn), Jupyter, Tableau, Power BI |
-| **DevOps** | Docker, GitHub Actions, Heroku, AWS EC2 |
+| Capa              | Tecnología                                                |
+| ----------------- | --------------------------------------------------------- |
+| **Frontend**      | React.js, D3.js, Chart.js, Tailwind CSS                   |
+| **Backend**       | FastAPI, Flask, Django, Node                              |
+| **ETL**           | Pandas, NumPy, Apache Airflow                             |
+| **Base de Datos** | PostgreSQL, BigQuery, Redshift                            |
+| **Análisis**      | Python (Pandas, Scikit-learn), Jupyter, Tableau, Power BI |
+| **DevOps**        | Docker, GitHub Actions, Heroku, AWS EC2                   |
 
 <!--
-|               | **Seguridad**                                             | OAuth 2.0, JWT, HTTPS        |
+| **Almacenamiento**                                        | AWS S3, Google Cloud Storage |
+
+| **Seguridad**                                             | OAuth 2.0, JWT, HTTPS        |
 -->
 
 ---
