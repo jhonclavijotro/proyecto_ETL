@@ -6,12 +6,14 @@ from urllib.parse import urlparse
 
 class conect_estudios():
     def __init__(self):
+        self.response = []
+        self.tags = []
         self.header = {
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0'}
         self._url_request = 'https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas'
         self._url_base = 'https://snies.mineducacion.gov.co/1778'
         self._save_path = './data/Excel_Min' # modificar path para almacenamiento de archivos
-        self.data = {}
+        self.url_list_links = {}
 
     def set_url_request(self, url):
         self._url_request = url
@@ -28,31 +30,43 @@ class conect_estudios():
         except:
             print('No se pudo conectar a la url\n{}'.format(self._url_request))
         if response.status_code == 200:
-            return response
+            self.response = response
         else:
             print('Error en la conexión\nCódigo {}'.format(response.status_code))
+    
+    def make_soup(self):
+        self.response = BeautifulSoup(markup = self.response.content, features = 'html.parser')
 
-    def lista_links(self, tags):
+    def get_tags(self, tag):
+        self.tags = self.response.find_all(name = tag)
+
+    def lista_links(self):
         urls = []
         names = []
-        for tag in tags:
+        for tag in self.tags:
             try:
                 titulo = tag['title']
-                if ('Estudiantes' in titulo) and (('Graduados' in titulo) or ('Admitidos' in titulo) or ('Matriculados' in titulo)) and (('2023' in titulo) or ('2024' in titulo)):
-                    urls.append(self._url_base + '/' + tag['href'])
-                    names.append(tag['title'])
+                name = titulo.split(' ')
+                name.remove('a')
+                name.remove('Ir')
             except:
                 pass
-        lista = {'url': urls, 'name': names}
-        return lista
+            try:                
+                if ('Estudiantes' in titulo) and (('Graduados' in titulo) or ('Admitidos' in titulo) or ('Matriculados' in titulo)) and (('2023' in titulo) or ('2024' in titulo)):
+                    urls.append(self._url_base + '/' + tag['href'])
+                    name = ' '.join(tuple(name))
+                    names.append(name)
+            except:
+                pass
+        self.url_list_links = {'url': urls, 'name': names}
 
-    def download_excel_files(self, urls, names):
+    def download_excel_files(self):
         # Crear directorio si no existe
         os.makedirs(self._save_path, exist_ok=True)
-        for _ in range(len(urls)):
+        for _ in range(len(self.url_list_links['url'])):
             try:
                 # Obtener nombre del archivo desde la URL
-                filename = names[_] + '.xlsx'
+                filename = self.url_list_links['name'][_]+ '.xlsx'
                 file_path = os.path.join(self._save_path, filename)
                 # Saltar si ya existe
                 if os.path.exists(file_path):
@@ -61,7 +75,7 @@ class conect_estudios():
                 print(f"Descargando {filename}...")
                 # Hacer la petición
                 response = requests.get(
-                    urls[_], headers=self.header, stream=True)
+                    self.url_list_links['url'][_], headers=self.header, stream=True)
                 response.raise_for_status()  # Verificar errores HTTP
                 # Guardar archivo
                 with open(file_path, 'wb') as f:
@@ -70,7 +84,7 @@ class conect_estudios():
                             f.write(chunk)
                 print(f"Descarga completada: {file_path}\n")
             except Exception as e:
-                print(f"Error al descargar {urls[_]}: {str(e)}\n")
+                print(f"Error al descargar {self.url_list_links['url'][_]}: {str(e)}\n")
 
     def crear_DataFrame(self):
         archivos = os.listdir(path = self._save_path)
@@ -85,8 +99,13 @@ class conect_estudios():
                 df.to_csv(path_or_buf = self._save_path + '/' + _ + '.csv', sep = ',')
 
     def get_data(self):
-        response = self.make_reques()
-        response = BeautifulSoup(response.content, features='html.parser')
-        tags = response.find_all(name='a', href=True)
-        lista = self.lista_links(tags=tags)
-        return lista
+        self.make_reques()
+        self.make_soup()
+        self.get_tags(tag='a')
+        self.lista_links()
+        self.download_excel_files()
+        self.crear_DataFrame()
+
+
+conn = conect_estudios()
+conn.get_data()
