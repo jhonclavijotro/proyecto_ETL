@@ -48,7 +48,7 @@ if response.status_code == 200:
         latest_month_year = (latest_files[0][1], latest_files[0][2])
         selected_files = [file for file in latest_files if (file[1], file[2]) == latest_month_year]
 
-        print("\n✅ **Descargando archivos más recientes:**")
+        #print("\n✅ **Descargando archivos más recientes:**")
         for file in selected_files:
             file_url = base_url + file[0]
             file_name = file[0].split("/")[-1]  # Extraer el nombre del archivo
