@@ -59,10 +59,10 @@ if response.status_code == 200:
             if file_response.status_code == 200:
                 with open(file_path, "wb") as f:
                     f.write(file_response.content)
-                print(f"✔️ Guardado: {file_path}")
-            else:
-                print(f"❌ Error al descargar: {file_url}")
-    else:
-        print("\n⚠️ No se encontraron archivos con fechas válidas.")
-else:
-    print("❌ No se pudo acceder a la página.")
+                #print(f"✔️ Guardado: {file_path}")
+            #else:
+                #print(f"❌ Error al descargar: {file_url}")
+    #else:
+        #print("\n⚠️ No se encontraron archivos con fechas válidas.")
+#else:
+    #print("❌ No se pudo acceder a la página.")
