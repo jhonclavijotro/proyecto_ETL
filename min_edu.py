@@ -126,9 +126,14 @@ class conect_estudios():
                 try:
                     name = _.split('.')[0].replace('Matriculados', '')
                     data = pd.read_csv(filepath_or_buffer=self._save_path + '/' + _)
-                    data = data.drop(columns='Unnamed: 0')
-                    data.to_csv(path_or_buf=self._save_path + '/' + name + '.csv')
+                    data = data.drop(columns=['Unnamed: 0', 'CÓDIGO DE LA INSTITUCIÓN','IES PADRE','ID SECTOR IES','SECTOR IES',
+                                              'ID CARÁCTER IES', 'CÓDIGO DEL DEPARTAMENTO (IES)','CÓDIGO DEL MUNICIPIO IES',
+                                              'MUNICIPIO DE DOMICILIO DE LA IES','CÓDIGO SNIES DEL PROGRAMA','ID NIVEL ACADÉMICO',
+                                              'ID NIVEL DE FORMACIÓN','NIVEL DE FORMACIÓN','ID MODALIDAD','ID ÁREA','ID NÚCLEO',
+                                              'ID CINE CAMPO AMPLIO','ID CINE CAMPO ESPECIFICO','ID CINE CAMPO DETALLADO',
+                                              'CÓDIGO DEL DEPARTAMENTO (PROGRAMA)','CÓDIGO DEL MUNICIPIO (PROGRAMA)','ID SEXO'])
                     os.remove(path=self._save_path + '/' + _)
+                    data.to_csv(path_or_buf=self._save_path + '/' + name + '.csv', index=False)
                 except:
                         os.remove(path=self._save_path + '/' + _)
             else:
@@ -136,9 +141,14 @@ class conect_estudios():
                     if _.split('.')[1] == 'csv':
                         data = pd.read_csv(
                             filepath_or_buffer=self._save_path+'/'+_)
-                        data = data.drop(columns='Unnamed: 0')
+                        data = data.drop(columns=['Unnamed: 0', 'CÓDIGO DE LA INSTITUCIÓN','IES PADRE','ID SECTOR IES','SECTOR IES',
+                                              'ID CARÁCTER IES', 'CÓDIGO DEL DEPARTAMENTO (IES)','CÓDIGO DEL MUNICIPIO IES',
+                                              'MUNICIPIO DE DOMICILIO DE LA IES','CÓDIGO SNIES DEL PROGRAMA','ID NIVEL ACADÉMICO',
+                                              'ID NIVEL DE FORMACIÓN','NIVEL DE FORMACIÓN','ID MODALIDAD','ID ÁREA','ID NÚCLEO',
+                                              'ID CINE CAMPO AMPLIO','ID CINE CAMPO ESPECIFICO','ID CINE CAMPO DETALLADO',
+                                              'CÓDIGO DEL DEPARTAMENTO (PROGRAMA)','CÓDIGO DEL MUNICIPIO (PROGRAMA)','ID SEXO'])
                         os.remove(path=self._save_path+'/'+_)
-                        data.to_csv(path_or_buf=self._save_path+'/'+_)
+                        data.to_csv(path_or_buf=self._save_path+'/'+_, sep=',', index=False)
                     elif _.split('.')[1] == 'xlsx':
                         os.remove(path=self._save_path+'/'+_)
                 except Exception as e:
@@ -227,4 +237,9 @@ class conect_estudios():
         los archivos descargados para un formato más cómodo"""
         self.modificar_excel()
         self.clean_files()
+
+conn = conect_estudios()
+conn.get_data()
+conn.clean_data()
+
 
