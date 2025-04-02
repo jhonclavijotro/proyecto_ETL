@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import os
 from urllib.parse import urlparse
+import visualizaciones
 
 
 class conect_estudios():
